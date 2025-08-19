@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Das Electro Furniture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f9f6f2;
+            color: #2e2e2e;
+            line-height: 1.6;
+        }
+
+        .site-header {
+            background: #f9f6f2;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #7a5c3a;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #7a5c3a;
+            font-weight: 550;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            background-color: #5e452b;
+            color: white;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .header-icons a {
+            margin-left: 1rem;
+            color: #7a5c3a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                position: fixed;
+                top: 0px;
+                right: -100%;
+                width: 40%;
+                height: 100vh;
+                background: #fff;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .main-nav.open {
+                right: 0;
+            }
+
+            .header-icons input[type="text"] {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            body.nav-open::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.3);
+                z-index: 900;
+            }
+        }
+
+
+        .forgot-password-section {
+            min-height: 90vh;
+            background: #f9f6f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .forgot-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .forgot-container h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #7a5c3a;
+        }
+
+        .forgot-container p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .forgot-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .forgot-form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #7a5c3a;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .forgot-form button:hover {
+            background-color: #90704c;
+        }
+
+        .extra-links {
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        .extra-links a {
+            color: #7a5c3a;
+            text-decoration: none;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        .site-footer {
+            background-color: #2e2e2e;
+            color: #f9f6f2;
+            padding: 4rem 2rem 2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .footer-brand p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .footer-links ul,
+        .footer-support ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links h4,
+        .footer-support h4,
+        .footer-news h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .footer-links a,
+        .footer-support a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover,
+        .footer-support a:hover {
+            color: #fff;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form input {
+            padding: 0.6rem;
+            border-radius: 6px;
+            border: none;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.6rem 0.1rem;
+            border: none;
+            background-color: #7a5c3a;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #5e452b;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .payment-methods img {
+            height: 28px;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="site-header">
+        <div class="logo">Das Electro Furniture</div>
+
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="img/Das Electro Furniture.pdf" download>Catlogs</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <input type="text" placeholder="Search..." />
+            <a href="cart.html" class="cart-icon">🛒</a>
+            <a href="login.html" class="login">Login</a>
+            <div class="hamburger" id="hamburger">&#9776;</div>
+        </div>
+    </header>
+
+
+
+    <section class="forgot-password-section">
+        <div class="forgot-container">
+            <h2>Forgot Your Password?</h2>
+            <p>No problem. Enter your email address below and we'll send you a link to reset your password.</p>
+
+            <form action="/reset-password" method="POST" class="forgot-form">
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <button type="submit">Send Reset Link</button>
+            </form>
+
+            <div class="extra-links">
+                <a href="newreg.html">New User? Register Here</a> |
+                <a href="login.html">Back to Login</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Das Electro Furniture</h3>
+                <p>Minimalist, modern, and comfortable furniture crafted to elevate your living space.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+
+            <div class="footer-support">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="Privacy Policy.html">Privacy Policy</a></li>
+                    <li><a href="Terms of Service.html">Terms of Service</a></li>
+                    <li><a href="Shipping Info.html">Shipping Info</a></li>
+                    <li><a href="Return Policy.html">Return Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-news">
+                <h4>Join Our Newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" />
+                    <button type="submit">Subscribe</button>
+                </form>
+
+                <div class="social-icons">
+                    <span>Follow Us:</span>
+            <a href="https://www.instagram.com/das_electro_furniture?igsh=MTd0cTVxY2Flb29xbQ=="><img src="img/instagram.png" alt="Instagram" /></a>
+            <a href="https://youtube.com/@daselectrofurniture?si=1fl_AaoYTpa9ZwNW"><img src="img/youtube.png" alt="YouTube" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Das Electro Furniture. All rights reserved.</p>
+            <div class="payment-methods">
+                <img src="img/1260c35a2cfe8477d0b11aed5a1fb4c9.png" alt="Visa" />
+                <img src="img/mclogo-for-footer.svg" alt="Mastercard" />
+                <img src="img/paypal.png" alt="PayPal" />
+                <img src="img/upipng.png" alt="UPI" />
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.getElementById('hamburger');
+            const mainNav = document.getElementById('mainNav');
+
+            if (hamburger && mainNav) {
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mainNav.classList.toggle('open');
+                    document.body.classList.toggle('nav-open');
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (!mainNav.contains(e.target) && !hamburger.contains(e.target)) {
+                        mainNav.classList.remove('open');
+                        document.body.classList.remove('nav-open');
+                    }
+                });
+            }
+        });
+
+
+
+        const cart = {};
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+
+        function addToCart(button) {
+            const card = button.closest('.product-card');
+            const name = card.getAttribute('data-name');
+            const price = parseInt(card.getAttribute('data-price'));
+
+            if (!cart[name]) {
+                cart[name] = { price, quantity: 1 };
+            } else {
+                cart[name].quantity += 1;
+            }
+
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            let totalCount = 0;
+
+            for (const [name, item] of Object.entries(cart)) {
+                totalCount += item.quantity;
+
+                const div = document.createElement('div');
+                div.classList.add('cart-item');
+                div.innerHTML = `
+          <strong>${name}</strong>
+          <span>₹${item.price} × ${item.quantity} = ₹${item.price * item.quantity}</span>
+        `;
+                cartItemsContainer.appendChild(div);
+            }
+
+            if (totalCount === 0) {
+                cartItemsContainer.innerHTML = '<p>No items yet.</p>';
+            }
+
+            cartCount.textContent = totalCount;
+        }
+
+        function scrollToCart() {
+            document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sofa Collection - Das Electro Furniture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f9f6f2;
+            color: #2e2e2e;
+            line-height: 1.6;
+        }
+
+
+        .categories {
+            padding: 2rem 2rem;
+            background-color: #f9f6f2;
+            text-align: center;
+        }
+
+        .categories h2 {
+            font-size: 2.25rem;
+            margin-bottom: 2rem;
+            color: #7a5c3a;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            position: relative;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card span {
+            background-color: rgba(122, 92, 58, 0.8);
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 0.75rem 1.5rem;
+            width: 100%;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .category-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .promo-banner {
+            background-color: #7a5c3a;
+            color: #fff;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0.8rem 0;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .promo-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        .promo-banner p {
+            display: inline-block;
+            padding-right: 100%;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .single-product-banner {
+            background-image: url('img/johnny-briggs-Asheyr3zRLE-unsplash.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 4rem 0;
+            border-radius: 0px;
+            overflow: hidden;
+        }
+
+        .banner-overlay {
+            background-color: rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .banner-content {
+            color: #fff;
+            text-align: center;
+        }
+
+        .banner-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .banner-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .banner-btn {
+            background-color: #7a5c3a;
+            color: #fff;
+            padding: 0.8rem 1.6rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .banner-btn:hover {
+            background-color: #5d4428;
+        }
+
+
+        .visit-store {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f9f6f2;
+        }
+
+        .visit-store h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #7a5c3a;
+        }
+
+        .visit-store .section-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .store-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .store-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 1.5rem;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            flex-wrap: nowrap;
+            flex-grow: 1;
+        }
+
+        .store-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .store-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            min-width: 260px;
+            flex-shrink: 0;
+        }
+
+        .store-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .store-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .store-info {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .store-info h3 {
+            font-size: 1.1rem;
+            color: #2e2e2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .store-info p {
+            font-size: 0.95rem;
+            color: #7a5c3a;
+        }
+
+        .scroll-btn {
+            background-color: rgba(122, 92, 58, 0.8);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .scroll-btn:hover {
+            background-color: #7a5c3a;
+            box-shadow: 0 0 8px rgba(122, 92, 58, 0.7);
+        }
+
+        .scroll-btn.left {
+            margin-right: 0.5rem;
+        }
+
+        .scroll-btn.right {
+            margin-left: 0.5rem;
+        }
+
+
+        .highlights-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #f9f6f2;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+        }
+
+        .highlight-item {
+            margin: 0.5rem 1rem;
+            color: #2e2e2e;
+        }
+
+        .highlight-item strong {
+            color: #7a5c3a;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+
+
+        .brand-promotion {
+            overflow: hidden;
+            background: #f9f6f2;
+            padding: 2rem 0;
+            border-top: 1px solid #e0dcd6;
+            border-bottom: 1px solid #e0dcd6;
+        }
+
+        .brand-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-left 20s linear infinite;
+        }
+
+        .brand-item {
+            flex: 0 0 auto;
+            margin: 0 2rem;
+            width: 120px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-item img {
+            max-width: 100%;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.8;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .brand-item img:hover {
+            filter: none;
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @keyframes scrollBrands {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .testimonials-section {
+            background-color: #f9f6f2;
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #111827;
+        }
+
+        .stars {
+            color: #facc15;
+            font-size: 1rem;
+            margin: 6px 0;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: #374151;
+            font-style: italic;
+        }
+
+        .new-arrivals {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f9f6f2;
+            position: relative;
+        }
+
+        .new-arrivals h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: #7a5c3a;
+        }
+
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .arrival-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .arrival-grid {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 1.5rem;
+            padding-bottom: 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            flex-wrap: nowrap;
+            flex-grow: 1;
+        }
+
+        .arrival-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .arrival-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            min-width: 240px;
+            flex-shrink: 0;
+        }
+
+        .arrival-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .arrival-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #7a5c3a;
+            color: #fff;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .arrival-card h3 {
+            font-size: 1.1rem;
+            color: #2e2e2e;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .arrival-card p {
+            font-size: 1rem;
+            color: #7a5c3a;
+            margin-bottom: 1rem;
+        }
+
+        .scroll-btn {
+            background-color: rgba(122, 92, 58, 0.8);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .scroll-btn:hover {
+            background-color: #7a5c3a;
+            box-shadow: 0 0 8px rgba(122, 92, 58, 0.7);
+        }
+
+        .scroll-btn.left {
+            margin-right: 0.5rem;
+        }
+
+        .scroll-btn.right {
+            margin-left: 0.5rem;
+        }
+
+        .card-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .card-buttons button {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+        }
+
+        .btn-buy {
+            background-color: #7a5c3a;
+            color: #fff;
+        }
+
+        .btn-buy:hover {
+            background-color: #5e452b;
+            transform: scale(1.05);
+        }
+
+        .btn-cart {
+            background-color: #f3f3f3;
+            color: #7a5c3a;
+            border: 1px solid #7a5c3a;
+        }
+
+        .btn-cart:hover {
+            background-color: #e7e1da;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .card-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card-buttons button {
+                width: 100%;
+                max-width: 160px;
+            }
+        }
+
+        .site-header {
+            background: #f9f6f2;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #7a5c3a;
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #7a5c3a;
+            font-weight: 550;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            background-color: #5e452b;
+            color: white;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .header-icons a {
+            margin-left: 1rem;
+            color: #7a5c3a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                position: fixed;
+                top: 0px;
+                right: -100%;
+                width: 40%;
+                height: 100vh;
+                background: #fff;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .main-nav.open {
+                right: 0;
+            }
+
+            .header-icons input[type="text"] {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            body.nav-open::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.3);
+                z-index: 900;
+            }
+        }
+
+        .site-footer {
+            background-color: #2e2e2e;
+            color: #f9f6f2;
+            padding: 4rem 2rem 2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .footer-brand p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .footer-links ul,
+        .footer-support ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links h4,
+        .footer-support h4,
+        .footer-news h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .footer-links a,
+        .footer-support a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover,
+        .footer-support a:hover {
+            color: #fff;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form input {
+            padding: 0.6rem;
+            border-radius: 6px;
+            border: none;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.6rem 0.1rem;
+            border: none;
+            background-color: #7a5c3a;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #5e452b;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .payment-methods img {
+            height: 28px;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header class="site-header">
+        <div class="logo">Das Electro Furniture</div>
+
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="img/Das Electro Furniture.pdf" download>Catlogs</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-icons">
+            <input type="text" placeholder="Search..." />
+            <a href="cart.html" class="cart-icon">🛒</a>
+            <a href="login.html" class="login">Login</a>
+            <div class="hamburger" id="hamburger">&#9776;</div>
+        </div>
+    </header>
+
+
+    <section id="categories" class="categories">
+        <h2>SHOP</h2>
+        <div class="category-grid">
+
+            <a href="sofa.html" class="category-card" style="background-image: url('img/whtgreenlvrm.jpg');">
+                <span>Sofas</span>
+            </a>
+            <a href="beds.html" class="category-card" style="background-image: url('img/bed.jpg');">
+                <span>Beds</span>
+            </a>
+            <a href="dining.html" class="category-card" style="background-image: url('img/din.webp');">
+                <span>Dining</span>
+            </a>
+            <a href="office.html" class="category-card" style="background-image: url('img/office.avif');">
+                <span>Office</span>
+            </a>
+            <a href="tables.html" class="category-card" style="background-image: url('img/tables.jpg');">
+                <span>Tables</span>
+            </a>
+            <a href="chairs.html" class="category-card" style="background-image: url('img/chairs.jpg');">
+                <span>Chairs</span>
+            </a>
+            <a href="mattress.html" class="category-card" style="background-image: url('img/matters.webp');">
+                <span>Mattress</span>
+            </a>
+            <a href="electronic.html" class="category-card" style="background-image: url('img/noic.webp');">
+                <span>Electronic</span>
+            </a>
+            <a href="lighting.html" class="category-card" style="background-image: url('img/light.webp');">
+                <span>Lighting</span>
+            </a>
+            <a href="storage.html" class="category-card" style="background-image: url('img/storage.avif');">
+                <span>Storage</span>
+            </a>
+            <a href="outdoor.html" class="category-card" style="background-image: url('img/outdoor.avif');">
+                <span>Outdoor</span>
+            </a>
+            <a href="decor.html" class="category-card" style="background-image: url('img/decor.webp');">
+                <span>Decor</span>
+            </a>
+
+
+        </div>
+    </section>
+
+
+    <section class="new-arrivals" id="new-arrivals">
+        <h2>New Arrivals</h2>
+        <p class="section-subtitle">Discover the latest pieces in our modern collection</p>
+
+        <div class="arrival-wrapper">
+            <button class="scroll-btn left" aria-label="Scroll left">&#9664;</button>
+
+            <div class="arrival-grid">
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/sofa new.jpg');">
+                        <span class="offer-badge">10% OFF</span>
+                    </div>
+                    <h3>Contempo Sofa</h3>
+                    <p>₹9999</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/table list.jpg');">
+                        <span class="offer-badge">New</span>
+                    </div>
+                    <h3>Nordic Writing Desk</h3>
+                    <p>₹2599</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/kingbed.jpg');">
+                        <span class="offer-badge">15% OFF</span>
+                    </div>
+                    <h3>Minimal King Bed</h3>
+                    <p>₹25000</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/listc.jpg');">
+                        <span class="offer-badge">Just In</span>
+                    </div>
+                    <h3>Urban Lounge Chair</h3>
+                    <p>₹3599</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/LSOFA.webp');">
+                        <span class="offer-badge">10% OFF</span>
+                    </div>
+                    <h3>L Sofa</h3>
+                    <p>₹6999</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/DESK.jpg');">
+                        <span class="offer-badge">New</span>
+                    </div>
+                    <h3>Desk</h3>
+                    <p>₹7999</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/QU.jpg');">
+                        <span class="offer-badge">15% OFF</span>
+                    </div>
+                    <h3>Queen Bed</h3>
+                    <p>₹25000</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/URBANBOOK.webp');">
+                        <span class="offer-badge">Just In</span>
+                    </div>
+                    <h3>Urban Bookshelf</h3>
+                    <p>₹6999</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/COFFEE.jpg');">
+                        <span class="offer-badge">20% OFF</span>
+                    </div>
+                    <h3>GlassTop Coffee Table</h3>
+                    <p>₹5999</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="arrival-card">
+                    <div class="arrival-img" style="background-image: url('img/TVSET.avif');">
+                        <span class="offer-badge">New</span>
+                    </div>
+                    <h3>Minimalist TV Unit</h3>
+                    <p>₹16999</p>
+                    <div class="card-buttons">
+                        <button class="btn-buy">Buy Now</button>
+                        <button class="btn-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <button class="scroll-btn right" aria-label="Scroll right">&#9654;</button>
+        </div>
+    </section>
+
+    <section class="promo-banner">
+        <div class="promo-content">
+            <p>🔥 20% OFF Summer Sale – Limited Time Only! | 🪑 Free shipping on orders over $500 | 🕒 Shop Today and
+                Save
+                More! 🔥</p>
+        </div>
+    </section>
+
+
+    <section class="single-product-banner">
+        <div class="banner-overlay">
+            <div class="banner-content">
+                <h2>Signature Leather Sofa</h2>
+                <p>Experience luxury and comfort in your living space</p>
+                <a href="shop.html" class="btn banner-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="visit-store" id="visit-store">
+        <h2>Visit Our Stores</h2>
+        <p class="section-subtitle">Experience comfort and design in person at our premium stores</p>
+
+        <div class="store-wrapper">
+            <button class="scroll-btn left" aria-label="Scroll left">&#9664;</button>
+
+            <div class="store-grid">
+                <div class="store-card">
+                    <div class="store-img" style="background-image: url('img/Situ\ Shop.png');"></div>
+                    <div class="store-info">
+                        <h3>Situ Milan Chowk</h3>
+                        <p>Main Road Milan Chowk</p>
+                    </div>
+                </div>
+
+                <div class="store-card">
+                    <div class="store-img" style="background-image: url('img/Situ\ Shop.png');"></div>
+                    <div class="store-info">
+                        <h3>Place soon...</h3>
+                        <p>Location soon....</p>
+                    </div>
+                </div>
+
+                <div class="store-card">
+                    <div class="store-img" style="background-image: url('img/Situ\ Shop.png');"></div>
+                    <div class="store-info">
+                        <h3>Place soon...</h3>
+                        <p>Location soon....</p>
+                    </div>
+                </div>
+
+                <div class="store-card">
+                    <div class="store-img" style="background-image: url('img/Situ\ Shop.png');"></div>
+                    <div class="store-info">
+                        <h3>Place soon...</h3>
+                        <p>Location soon....</p>
+                    </div>
+                </div>
+
+                <div class="store-card">
+                    <div class="store-img" style="background-image: url('img/Situ\ Shop.png');"></div>
+                    <div class="store-info">
+                       <h3>Place soon...</h3>
+                       <p>Location soon....</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="scroll-btn right" aria-label="Scroll right">&#9654;</button>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Real stories from real buyers across India</p>
+
+        <div class="testimonial-grid">
+
+            <div class="testimonial-card">
+                <img src="img/riya.jpeg" alt="Customer 1" class="testimonial-img" />
+                <h3>Riya Mehra</h3>
+                <p class="stars">★★★★★</p>
+                <p class="testimonial-text">“The induction cooktop works like magic! Sleek design and energy-efficient.
+                    Das Electro never disappoints.”</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="img/Amit Verma.avif" alt="Customer 2" class="testimonial-img" />
+                <h3>Amit Verma</h3>
+                <p class="stars">★★★★☆</p>
+                <p class="testimonial-text">“Got the 42-inch LED TV. Crystal-clear display and perfect for my living
+                    room. Fast delivery too.”</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="img/Saloni Desai.webp" alt="Customer 3" class="testimonial-img" />
+                <h3>Saloni Desai</h3>
+                <p class="stars">★★★★★</p>
+                <p class="testimonial-text">“Purchased a double-door fridge — amazing capacity and modern finish.
+                    Customer service was top-notch.”</p>
+            </div>
+
+            <div class="testimonial-card">
+                <img src="img/Neeraj Kulkarni.jpeg" alt="Customer 4" class="testimonial-img" />
+                <h3>Neeraj Kulkarni</h3>
+                <p class="stars">★★★★☆</p>
+                <p class="testimonial-text">“The air cooler really helps during peak summer. Stylish and works quietly.
+                    Worth every rupee!”</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="highlights-bar">
+        <div class="highlight-item">
+            <strong>100+</strong><span> Experience Stores Across India</span>
+        </div>
+        <div class="highlight-item">
+            <strong>350+</strong><span> Delivery Centers Across India</span>
+        </div>
+        <div class="highlight-item">
+            <strong>10 Lakh+</strong><span> Satisfied Customers</span>
+        </div>
+        <div class="highlight-item">
+            <strong>Lowest Price</strong><span> Guarantee</span>
+        </div>
+        <div class="highlight-item">
+            <strong>36 Months*</strong><span> Warranty</span>
+        </div>
+    </section>
+
+
+    <section class="brand-promotion">
+        <div class="brand-track">
+            <div class="brand-item"><img src="img/chanel.webp" alt="Brand 1"></div>
+            <div class="brand-item"><img src="img/ebny.avif" alt="Brand 2"></div>
+            <div class="brand-item"><img src="img/facebook.webp" alt="Brand 3"></div>
+            <div class="brand-item"><img src="img/fdx.webp" alt="Brand 4"></div>
+            <div class="brand-item"><img src="img/godrej.webp" alt="Brand 5"></div>
+            <div class="brand-item"><img src="img/ibm.webp" alt="Brand 6"></div>
+            <div class="brand-item"><img src="img/1260c35a2cfe8477d0b11aed5a1fb4c9.png" alt="Brand 1"></div>
+            <div class="brand-item"><img src="img/wakmrt.webp" alt="Brand 2"></div>
+        </div>
+    </section>
+
+
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Das Electro Furniture</h3>
+                <p>Minimalist, modern, and comfortable furniture crafted to elevate your living space.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-support">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="Privacy Policy.html">Privacy Policy</a></li>
+                    <li><a href="Terms of Service.html">Terms of Service</a></li>
+                    <li><a href="Shipping Info.html">Shipping Info</a></li>
+                    <li><a href="Return Policy.html">Return Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-news">
+                <h4>Join Our Newsletter</h4>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" />
+                    <button type="submit">Subscribe</button>
+                </form>
+
+                <div class="social-icons">
+                    <span>Follow Us:</span>
+                    <a href="https://www.instagram.com/das_electro_furniture?igsh=MTd0cTVxY2Flb29xbQ=="><img
+                            src="img/instagram.png" alt="Instagram" /></a>
+                    <a href="https://youtube.com/@daselectrofurniture?si=1fl_AaoYTpa9ZwNW"><img src="img/youtube.png"
+                            alt="YouTube" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Das Electro Furniture. All rights reserved.</p>
+            <div class="payment-methods">
+                <img src="img/1260c35a2cfe8477d0b11aed5a1fb4c9.png" alt="Visa" />
+                <img src="img/mclogo-for-footer.svg" alt="Mastercard" />
+                <img src="img/paypal.png" alt="PayPal" />
+                <img src="img/upipng.png" alt="UPI" />
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.getElementById('hamburger');
+            const mainNav = document.getElementById('mainNav');
+
+            if (hamburger && mainNav) {
+                hamburger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mainNav.classList.toggle('open');
+                    document.body.classList.toggle('nav-open');
+                });
+
+                window.addEventListener('click', (e) => {
+                    if (!mainNav.contains(e.target) && !hamburger.contains(e.target)) {
+                        mainNav.classList.remove('open');
+                        document.body.classList.remove('nav-open');
+                    }
+                });
+            }
+        });
+
+
+        const cart = {};
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+
+        function addToCart(button) {
+            const card = button.closest('.product-card');
+            const name = card.getAttribute('data-name');
+            const price = parseInt(card.getAttribute('data-price'));
+
+            if (!cart[name]) {
+                cart[name] = { price, quantity: 1 };
+            } else {
+                cart[name].quantity += 1;
+            }
+
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            let totalCount = 0;
+
+            for (const [name, item] of Object.entries(cart)) {
+                totalCount += item.quantity;
+
+                const div = document.createElement('div');
+                div.classList.add('cart-item');
+                div.innerHTML = `
+          <strong>${name}</strong>
+          <span>₹${item.price} × ${item.quantity} = ₹${item.price * item.quantity}</span>
+        `;
+                cartItemsContainer.appendChild(div);
+            }
+
+            if (totalCount === 0) {
+                cartItemsContainer.innerHTML = '<p>No items yet.</p>';
+            }
+
+            cartCount.textContent = totalCount;
+        }
+
+        function scrollToCart() {
+            document.getElementById('cart-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const storeScrollContainer = document.querySelector('.store-grid');
+            const storeBtnLeft = document.querySelector('.visit-store .scroll-btn.left');
+            const storeBtnRight = document.querySelector('.visit-store .scroll-btn.right');
+
+            const scrollAmount = 300;
+
+            if (storeScrollContainer && storeBtnLeft && storeBtnRight) {
+                storeBtnLeft.addEventListener('click', () => {
+                    storeScrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                storeBtnRight.addEventListener('click', () => {
+                    storeScrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+        });
+
+
+    </script>
+</body>
+</html>
